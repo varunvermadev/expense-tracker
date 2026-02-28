@@ -4,7 +4,6 @@ import {
   PieChart,
   Pie,
   Cell,
-  ResponsiveContainer,
   Tooltip,
 } from "recharts"
 import {
@@ -59,8 +58,7 @@ export function CategoryPieChart({ data }: CategoryPieChartProps) {
       </CardHeader>
       <CardContent>
         <ChartContainer config={chartConfig} className="mx-auto h-[250px]">
-          <ResponsiveContainer width="100%" height="100%">
-            <PieChart>
+          <PieChart>
               <Pie
                 data={chartData}
                 cx="50%"
@@ -90,7 +88,6 @@ export function CategoryPieChart({ data }: CategoryPieChartProps) {
                 }}
               />
             </PieChart>
-          </ResponsiveContainer>
         </ChartContainer>
         <div className="mt-3 flex flex-wrap gap-2">
           {data.slice(0, 5).map((d) => (

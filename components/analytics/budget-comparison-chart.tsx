@@ -6,7 +6,6 @@ import {
   XAxis,
   YAxis,
   CartesianGrid,
-  ResponsiveContainer,
   Tooltip,
   Legend,
 } from "recharts"
@@ -63,8 +62,7 @@ export function BudgetComparisonChart({ data }: BudgetComparisonChartProps) {
           }}
           className="h-[250px]"
         >
-          <ResponsiveContainer width="100%" height="100%">
-            <BarChart data={chartData} margin={{ top: 5, right: 5, left: -20, bottom: 0 }}>
+          <BarChart data={chartData} margin={{ top: 5, right: 5, left: -20, bottom: 0 }}>
               <CartesianGrid strokeDasharray="3 3" className="stroke-border" />
               <XAxis
                 dataKey="name"
@@ -102,7 +100,6 @@ export function BudgetComparisonChart({ data }: BudgetComparisonChartProps) {
               <Bar dataKey="budget" fill={budgetColor} radius={[4, 4, 0, 0]} barSize={20} name="Budget" />
               <Bar dataKey="actual" fill={actualColor} radius={[4, 4, 0, 0]} barSize={20} name="Actual" />
             </BarChart>
-          </ResponsiveContainer>
         </ChartContainer>
       </CardContent>
     </Card>

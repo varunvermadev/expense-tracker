@@ -6,7 +6,6 @@ import {
   XAxis,
   YAxis,
   CartesianGrid,
-  ResponsiveContainer,
   Tooltip,
 } from "recharts"
 import {
@@ -54,8 +53,7 @@ export function DailyTrendChart({ data }: DailyTrendChartProps) {
           }}
           className="h-[250px]"
         >
-          <ResponsiveContainer width="100%" height="100%">
-            <AreaChart data={data} margin={{ top: 5, right: 5, left: -20, bottom: 0 }}>
+          <AreaChart data={data} margin={{ top: 5, right: 5, left: -20, bottom: 0 }}>
               <defs>
                 <linearGradient id="fillAmount" x1="0" y1="0" x2="0" y2="1">
                   <stop offset="5%" stopColor={primaryColor} stopOpacity={0.3} />
@@ -97,7 +95,6 @@ export function DailyTrendChart({ data }: DailyTrendChartProps) {
                 fill="url(#fillAmount)"
               />
             </AreaChart>
-          </ResponsiveContainer>
         </ChartContainer>
       </CardContent>
     </Card>
