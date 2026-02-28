@@ -4,10 +4,14 @@ import {
   tool,
   UIMessage,
 } from "ai"
-import { google } from "@ai-sdk/google"
+import { createGoogleGenerativeAI } from "@ai-sdk/google"
 import * as z from "zod"
 
 export const maxDuration = 30
+
+const google = createGoogleGenerativeAI({
+  apiKey: process.env.GOOGLE_GENERATIVE_AI_API_KEY,
+})
 
 const addExpenseTool = tool({
   description:
