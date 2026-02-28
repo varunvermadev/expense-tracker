@@ -14,19 +14,27 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
         with:
           node-version: "20"
-          cache: "npm"
+          # This specifically looks for package-lock.json in the root
+          cache: 'npm' 
+
       - name: Install dependencies
-        run: npm install
+        # 'npm ci' is faster and cleaner for CI/CD than 'npm install'
+        run: npm ci 
+
       - name: Build with Next.js
         run: npm run build
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./out # Next.js static output folder
+          path: ./out
 
   deploy:
     needs: build
