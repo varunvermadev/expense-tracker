@@ -10,6 +10,7 @@ import { addExpense } from "@/lib/db"
 import { getCategoryById } from "@/lib/categories"
 import { formatCurrency } from "@/lib/format"
 import { mutate } from "swr"
+import { toast } from "sonner"
 
 interface ChatDrawerProps {
   open: boolean
@@ -23,6 +24,10 @@ export function ChatDrawer({ open, onOpenChange }: ChatDrawerProps) {
   const { messages, sendMessage, addToolOutput, status } = useChat({
     transport: new DefaultChatTransport({ api: "/api/chat" }),
     sendAutomaticallyWhen: lastAssistantMessageIsCompleteWithToolCalls,
+    onError(error) {
+      toast.error("AI is having trouble right now. Please try again in a moment.")
+      console.error("Chat error:", error)
+    },
     onToolCall({ toolCall }) {
       if (toolCall.dynamic) return
 

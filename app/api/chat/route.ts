@@ -4,14 +4,9 @@ import {
   tool,
   UIMessage,
 } from "ai"
-import { createGoogleGenerativeAI } from "@ai-sdk/google"
 import * as z from "zod"
 
 export const maxDuration = 30
-
-const google = createGoogleGenerativeAI({
-  apiKey: process.env.GOOGLE_GENERATIVE_AI_API_KEY,
-})
 
 const addExpenseTool = tool({
   description:
@@ -63,7 +58,7 @@ export async function POST(req: Request) {
   const messages: UIMessage[] = body.messages
 
   const result = streamText({
-    model: google("gemini-2.0-flash"),
+    model: "google/gemini-2.0-flash",
     system: `You are SpendWise AI, a friendly and efficient expense tracking assistant. Your job is to help users log their daily expenses through natural conversation.
 
 When a user tells you about an expense:
